@@ -124,7 +124,7 @@ their meaning.
 
 ### Converting between tags
 
-Suppose you have a `Beamable` type paramaterized over a tag `f` and needed one
+Suppose you have a `Beamable` type parameterized over a tag `f` and needed one
 parameterized over a tag `g`. Given a function `conv :: forall a. Columnar f a
 -> Columnar g a`, you can use `changeBeamRep` to convert between the tables.
 
