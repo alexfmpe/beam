@@ -28,7 +28,7 @@ Beam features
 ## How to install
 
 Beam is available via Hackage and Stackage, and can be included in your stack
-project by adding `beam-core` and an appropriate beam backend to your
+project by adding `beam-core` and an appropriate Beam backend to your
 `stack.yaml` as an `extra-dep`. Some projects may want to follow the latest
 master, for the newest features. If so, put the following in your `stack.yaml`
 to build and use beam in your project!
@@ -46,7 +46,7 @@ packages:
 ```
 
 !!! note "Note"
-    the commit will need to be changed to whatever the latest commit of master is,
+    The commit will need to be changed to whatever the latest commit of master is,
     or whichever commit you want to build from even.
 
 and add the following to your `.cabal` file, in the `build-depends` section:
@@ -56,7 +56,7 @@ beam-core,
 <backend>
 ```
 
-You may alse want to add the `beam-migrate` package if you want to
+You may also want to add the `beam-migrate` package if you want to
 manage your database schemas in Haskell as well.
 
 Available backends are:
@@ -76,13 +76,13 @@ Available backends are:
 
 ## Quick Start Guide
 
-For those looking to get started with beam, we first recommend you go through
+For those looking to get started with Beam, we first recommend you go through
 the [tutorial](tutorials/tutorial1.md). The [user guide](user-guide/models.md)
 contains much more detailed reference-like information. Finally, the
 documentation on hackage is always available (although the types may seem
 obtuse).
 
-If you're interested if beam supports your favorite database feature, refer to
+If you're interested if Beam supports your favorite database feature, refer to
 the documentation for your backend or take a look at
 the [compatibility matrix](about/compatibility.md).
 
@@ -131,9 +131,9 @@ rarely be forced to write a SQL query 'by hand' when using Beam
 Additionally, Beam plays nice with the rest of the Haskell ecosystem, the
 standard Beam backends are all implemented in terms of pre-existing Haskell
 packages. Beam does not intend to make every query work across every database,
-and you are free to write queries in beam's DSL that only work on particular
+and you are free to write queries in Beam's DSL that only work on particular
 backends, using type classes to restrict which backends work. It is assumed that
-you have chosen you RDBMS with much care, and we want to support you in
+you have chosen your RDBMS with much care, and we want to support you in
 that. Beam's main purpose is to marshal data back and forth, to serve as the
 source of truth for the DB schema, and to generate properly formed SQL from
 Haskell expressions.
