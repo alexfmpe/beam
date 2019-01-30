@@ -1,4 +1,6 @@
-A beam model is any single-constructer Haskell record type parameterized by a
+The standalone Beamable instances are quite ugly. Luckily, the new deriving strategies extension in GHC 8.2 will allow us to write the Beamable instance 'in-line', so we can write deriving (Generic, Beamable) instead.
+
+A beam model is any single-constructor Haskell record type parameterized by a
 type of kind `* -> *`. The model must have an instance of `Generic`, `Beamable`,
 and `Table`. `Generic` can be derived using the `DeriveGeneric` extension of
 GHC. `Beamable` must be given an empty instance declaration (`instance Beamable
@@ -42,7 +44,7 @@ instance Table Tbl where
 
 ## The `Identity` trick
 
-Beam table types are commonly prefixed by a `T` to indicate the name of the
+Beam table types are commonly suffixed by a `T` to indicate the name of the
 generic table type. Usually, a type synonym named by leaving out the `T` is
 defined by applying the table to `Identity`. Recall each field in the table is
 either another table or an application of `Columnar` to the type parameter. When
@@ -111,7 +113,7 @@ table take on the corresponding `Maybe` type.
     concept of a nested optional type. Beam treats a `Nothing` at any 'layer' of
     the `Maybe` stack as a corresponding SQL `NULL`. When marshalling data back,
     a SQL `NULL` is read in as a top-level `Nothing`.
-    
+
     The reasons for this misfeature is basically code simplicity. Fixing this is
     a top priority of future versions of beam.
 
@@ -124,7 +126,7 @@ their meaning.
 
 ### Converting between tags
 
-Suppose you have a `Beamable` type paramaterized over a tag `f` and needed one
+Suppose you have a `Beamable` type parameterized over a tag `f` and needed one
 parameterized over a tag `g`. Given a function `conv :: forall a. Columnar f a
 -> Columnar g a`, you can use `changeBeamRep` to convert between the tables.
 
@@ -137,7 +139,7 @@ There is one caveat however -- since `Columnar` is a type family, the type of
 newtype Columnar' f a = Columnar' (Columnar f a)
 ```
 
-Notice that, unlinke `Columnar` (a non-injective type family), `Columnar'` is a
+Notice that, unlike `Columnar` (a non-injective type family), `Columnar'` is a
 full type. The type of `conv' :: forall a. Columnar' f a -> Columnar' g a` is
 now unambiguous. You can easily use `conv` to implement `conv'`:
 
