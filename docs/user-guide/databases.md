@@ -179,7 +179,7 @@ modifications. For example, the `modifyTable` function can be used to produce a
 table modification given a modifier function for the table name and a table
 modification. Like database modifications, an identity table modification can be
 constructed with the `tableModification` function. Modifications to field names
-con be accomplished using Haskell record syntax on the result of
+can be accomplished using Haskell record syntax on the result of
 `tableModification`. The `fieldNamed` field modification will give a field an
 explicit new name.
 
